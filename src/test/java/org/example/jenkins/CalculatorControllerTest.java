@@ -34,4 +34,26 @@ class CalculatorControllerTest {
         Assertions.assertEquals((a + b), answer);
 
     }
+
+    @Test
+    void subtract() throws IOException, InterruptedException {
+        int a = 10;
+        int b = 5;
+
+        HttpClient httpClient = HttpClient.newBuilder().build();
+
+        HttpRequest httpRequest = HttpRequest
+                .newBuilder(URI.create("http://localhost:8081/subtract?a=%d&b=%d".formatted(a, b)))
+                .GET()
+                .build();
+
+        String body = httpClient
+                .send(httpRequest, HttpResponse.BodyHandlers.ofString())
+                .body();
+
+        int answer = Integer.parseInt(body);
+
+        Assertions.assertEquals((a - b), answer);
+
+    }
 }
