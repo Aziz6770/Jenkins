@@ -40,6 +40,8 @@ class CalculatorControllerTest {
         int a = 10;
         int b = 5;
 
+        System.out.println("Hello");
+
         HttpClient httpClient = HttpClient.newBuilder().build();
 
         HttpRequest httpRequest = HttpRequest
